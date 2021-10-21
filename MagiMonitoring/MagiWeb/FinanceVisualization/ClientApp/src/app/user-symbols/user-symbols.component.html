@@ -1,0 +1,78 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="USER DEFINED SYMBOL GROUPS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedUserSymbolGroups()" [disabled]="!selectedUserSymbolGroups || !selectedUserSymbolGroups.length"></button>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table #dt [value]="userSymbolGroups" [rows]="10" [paginator]="true" [globalFilterFields]="['name']"
+           [(selection)]="selectedUserSymbolGroups" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Search..." />
+        </span>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="insertDate">Created On <p-sortIcon field="insertDate"></p-sortIcon></th>
+        <th>Symbols</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-usg>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="usg"></p-tableCheckbox>
+        </td>
+        <td>{{usg.name}}</td>
+        <td>{{usg.insertDate| date:'yyyy-MM-dd'}}</td>
+        <td>{{symbolGroupListToString(usg.userSymbolGroupDetails)}}</td>
+        <td>
+          <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteUserSymbolGroup(usg)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{userSymbolGroups ? userSymbolGroups.length : 0 }} user symbol groups.
+      </div>
+    </ng-template>
+  </p-table>
+</p-card>
+
+<p-dialog [(visible)]="userSymbolGroupDialog" [style]="{width: '60vw'}" [contentStyle]="{height: '40vw'}" header="User Symbol Group Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="p-field">
+      <label for="Name">Name</label>
+      <input type="text" pInputText id="Name" [(ngModel)]="currentUserSymbolGroup.Name" required autofocus />
+      <small class="p-invalid" *ngIf="!currentUserSymbolGroup.Name">Name is required.</small>
+    </div>
+    <div class="p-field" style="margin-top:30px;">
+      <label for="description">Symbols</label>
+      <p-multiSelect id="Symbols" scrollHeight="250px" [options]="distinctSymbolsList" [(ngModel)]="selectedSymbols" defaultLabel="Select symbols" optionLabel="fullName" optionValue="name"></p-multiSelect>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveUserSymbolGroup()"></button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

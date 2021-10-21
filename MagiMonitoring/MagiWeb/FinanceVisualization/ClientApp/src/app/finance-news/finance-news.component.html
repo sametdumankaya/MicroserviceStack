@@ -1,0 +1,148 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="EVENT ANALYSIS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p><i>Filters</i></p>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-calendar id="startDateTime" [(ngModel)]="startDateTime" dateFormat="yy/mm/dd" [style]="{'width':'100%'}" [showButtonBar]="true" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+      <small id="startDateTime-help">Event date.</small>
+    </div>
+    <div class="text-left col-md">
+      <p-dropdown id="eventFlagDropdown" [style]="{'width':'100%'}" class="text-left" [options]="eventFlags" [(ngModel)]="selectedEventFlag" optionLabel="name"></p-dropdown>
+      <small id="eventFlagDropdown-help">Event type. Price, volume or combined.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-multiSelect id="sectorOptions" [options]="sectorOptions" (onChange)="onSectorOptionsChange($event)" [style]="{'width':'100%'}" [(ngModel)]="selectedSectors" optionLabel="name"></p-multiSelect>
+      <small id="sectorOptions-help">Sector filter.</small>
+    </div>
+    <div class="text-left col-md">
+      <p-multiSelect id="industryOptions" [options]="industryOptions" [style]="{'width':'100%'}" [(ngModel)]="selectedIndustries" optionLabel="name"></p-multiSelect>
+      <small id="industryOptions-help">Industry filter.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-inputNumber id="minMarket" inputId="minMarket" prefix="$ " [style]="{'width':'100%'}" [(ngModel)]="minMarketCap"></p-inputNumber>
+      <small id="minMarket-help">Minimum market cap value.</small>
+    </div>
+    <div class="text-left col-md">
+      <p-inputNumber id="maxMarket" inputId="maxMarket" prefix="$ " [style]="{'width':'100%'}" [(ngModel)]="maxMarketCap"></p-inputNumber>
+      <small id="maxMarket-help">Maximum market cap value.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md-6">
+      <p-multiSelect id="indicatorOptions" [options]="indicatorOptions" [style]="{'width':'100%'}" [(ngModel)]="selectedIndicators" optionLabel="name"></p-multiSelect>
+      <small id="indicatorOptions-help">Indicator filter. Leading, main or trailing indicators.</small>
+    </div>
+    <div class="text-left col-md-6">
+      <p-dropdown id="userSymbolGroupDropdown" [showClear]="true" [style]="{'width':'100%'}" class="text-left" [options]="userSymbolGroups" [(ngModel)]="selectedUserSymbolGroup" placeholder="User symbol groups." optionLabel="name"></p-dropdown>
+      <small id="userSymbolGroupDropdown-help">Filter events by your favorite symbol groups.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md-6">
+      <p-dropdown id="gainOrLossFilter" [showClear]="true" [style]="{'width':'100%'}" class="text-left" [options]="gainLossOptions" [(ngModel)]="selectedGainLoss" placeholder="Select gain, loss or all." optionLabel="name"></p-dropdown>
+      <small id="userSymbolGroupDropdown-help">Gain or loss filter.</small>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-center col-md-6">
+    </div>
+    <div class="text-right col-md-6">
+      <button pButton type="button" label="Remove Filters" style="margin-right: 15px;" (click)="removeFilters()" class="p-button-primary">
+        <i class="fas fa-ban fa-fw mr-1"></i>
+      </button>
+      <button pButton type="button" label="Filter" icon="pi pi-filter" (click)="filterData()" class="p-button-primary"></button>
+    </div>
+  </div>
+  <div class="row" *ngIf="isChartDataAvailable()" style="margin-top:90px;">
+    <div class="col-md">
+      <div class="row" style="margin-left:3px;">
+        <button tooltipPosition="left" pTooltip="You can zoom the chart by drawing a rectangle and reset the zoom with the button on the right." pButton pRipple type="button" icon="pi pi-info-circle" class="p-button-rounded p-button-info p-button-outlined p-button-text"></button>
+        <button style="margin-left:15px;" (click)="resetZoomState()" pButton pRipple type="button" label="Reset Zoom" class="p-button-primary"></button>
+      </div>
+    </div>
+    <div class="col-md">
+      <div class="text-right">
+        <p-dropdown id="chartTypeDropdown" (onChange)="onChartTypeDropdownChange($event)" class="text-left" [options]="chartTypes" [(ngModel)]="selectedChartType" placeholder="Select a Chart Type" optionLabel="name"></p-dropdown>
+      </div>
+    </div>
+  </div>
+  <p-chart #barChart *ngIf="isChartDataAvailable()" [height]="750" type="bar" [data]="chartData" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
+  <p class="text-center" style="margin-top: 60px;" *ngIf="!(isChartDataAvailable())"><i>No events available for the currently selected filters. Try to change filter values.</i></p>
+  <br />
+  <p class="text-right"><i>Current time: {{ today | date:'medium' : 'PST'  }} </i></p>
+</p-card>
+<br />
+<br />
+
+<p-card *ngIf="isChartDataAvailable()" header="Finance News" styleClass="p-card-shadow">
+  <p-scrollPanel [style]="{width: '100%', height: '75vh'}">
+    <div *ngFor="let e of events">
+      <div *ngIf="e.newsTitle != null || e.htmlData != null">
+        <p-fieldset [legend]="e.newsTitle">
+          <div [innerHTML]="e.htmlData"></div>
+        </p-fieldset>
+        <br />
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-card>
+
+<p-dialog *ngIf="selectedEvent != null" header="Event, Happened at {{ selectedEvent.eventDateTimeStamp | date: 'yyyy/MM/dd HH:mm:ss' }}" [(visible)]="displayModalEvent" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+
+  <p-card [header]="selectedEvent.newsTitle != null ? selectedEvent.newsTitle : 'News Title Unavailable'">
+    <div [innerHTML]="selectedEvent.htmlData != null ? selectedEvent.htmlData : 'News Unavailable'"></div>
+  </p-card>
+
+  <br />
+  <br />
+
+  <p-card header="Indicators">
+    <div *ngFor="let idetail of selectedEvent.indicatorDetails">
+      <p-card>
+        <div class="row">
+          <div class="col-md">
+            <label for="liFirms"><i>Firm</i></label>
+            <p id="liFirms"><a target="_blank" *ngIf="idetail.firmInfo && idetail.firmInfo.target" [href]="idetail.firmInfo.website">{{ idetail.firmInfo.target.replace('amp;', '') }}</a></p>
+            <p id="liFirms"><a *ngIf="!(idetail.firmInfo && idetail.firmInfo.target)">UNKNOWN</a></p>
+          </div>
+          <div class="col-md">
+            <label for="liVolume"><i>Market Cap</i></label>
+            <p id="liVolume" *ngIf="idetail.volume">${{ (idetail.volume * idetail.price) | number }}</p>
+            <p id="liVolume" *ngIf="!idetail.volume">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="liSectors"><i>Sectors</i></label>
+            <p id="liSectors" *ngIf="idetail.firmInfo && idetail.firmInfo.sector">{{ idetail.firmInfo.sector.replace('amp;', '')  }}</p>
+            <p id="liSectors" *ngIf="!(idetail.firmInfo && idetail.firmInfo.sector)">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="liIndustries"><i>Industries</i></label>
+            <p id="liIndustries" *ngIf="idetail.firmInfo && idetail.firmInfo.industry">{{ idetail.firmInfo.industry.replace('amp;', '')  }}</p>
+            <p id="liIndustries" *ngIf="!(idetail.firmInfo && idetail.firmInfo.industry)">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="liSectors"><i>Event Role</i></label>
+            <p id="liSectors" *ngIf="idetail.eventRole">{{ idetail.eventRole  }}</p>
+            <p id="liSectors" *ngIf="!(idetail.eventRole)">Other Firms Sum</p>
+          </div>
+        </div>
+      </p-card>
+      <br />
+    </div>
+  </p-card>
+
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModalEvent=false" label="Done" class="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+
+

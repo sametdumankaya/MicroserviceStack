@@ -1,0 +1,8 @@
+{
+  "start_node_id": 2,
+  "end_node_id": 1,
+  "relation_name": "marry",
+  "relation_properties": {
+    "relation_attr": "test attribute"
+  }
+}

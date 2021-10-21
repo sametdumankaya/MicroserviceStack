@@ -1,0 +1,113 @@
+version: "3.9"
+services:
+  magi_monitoring_api:
+    build: .
+    env_file:
+      - env_files/.env-api
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/local/bin/docker-compose:/usr/local/bin/docker-compose
+      - /usr/bin/docker:/usr/bin/docker
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /home/magi/data/redisStockData:/home/magi/data/redisStockData
+    network_mode: "host"
+    restart: on-failure:3
+  redistimeseries:
+    image: "redislabs/redistimeseries"
+    volumes:
+      - redis_volume:/data
+    network_mode: "host"
+    restart: on-failure:3
+  neo4j:
+    image: "neo4j"
+    environment:
+      - NEO4J_AUTH=neo4j/magi
+      - NEO4JLABS_PLUGINS=["apoc"]
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=false
+    volumes:
+      - neo4j_volume:/data
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    restart: on-failure:3
+  grafana:
+    image: "grafana/grafana:7.3.10"
+    network_mode: "host"
+    volumes:
+      - grafana_volume:/var/lib/grafana
+      - ./grafana_provisioning:/etc/grafana/provisioning
+    environment:
+      - GF_INSTALL_PLUGINS=redis-datasource,innius-video-panel,jdbranham-diagram-panel
+      - GF_DASHBOARDS_MIN_REFRESH_INTERVAL=1s
+      - GF_PANELS_DISABLE_SANITIZE_HTML=true
+      - GF_LOG_LEVEL=warn
+    restart: on-failure:3
+  mysqldb:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: magi
+      MYSQL_DATABASE: magi
+      MYSQL_USER: magi
+      MYSQL_PASSWORD: magi
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_volume:/var/lib/mysql
+      - ../VisAPI/sql:/docker-entrypoint-initdb.d/:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: on-failure:3
+  vis_api:
+    build: ../VisAPI
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ../VisAPI/env_files/.env-api
+    network_mode: "host"
+    restart: on-failure:3
+  neo4j_api:
+    build: ../Neo4jAPI
+    volumes:
+      - neo4j_volume:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ../Neo4jAPI/env_files/.env-api
+    network_mode: "host"
+    restart: on-failure:3
+  annotation_api:
+    build: ../AnnotationAPI
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ../AnnotationAPI/env_files/.env-api
+    network_mode: "host"
+    restart: on-failure:3
+  finance_api:
+    build: ../Finance
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    env_file:
+      - ../Finance/env_files/.env-api
+    network_mode: "host"
+    restart: on-failure:3
+  scheduler_mongodb:
+    image: mongo:latest
+    network_mode: "host"
+    command: mongod --quiet --logpath /dev/null
+    volumes:
+      - mongodb_volume:/data/db
+    restart: on-failure:3
+
+volumes:
+  grafana_volume:
+  mongodb_volume:
+  mysql_volume:
+  neo4j_volume:
+  redis_volume:

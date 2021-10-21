@@ -1,0 +1,24 @@
+version: "3.9"
+services:
+  magi_monitoring_api:
+    build: .
+    env_file:
+      - env_files/.env-api
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8000:8000"
+  redistimeseries:
+    image: "redislabs/redistimeseries"
+    ports:
+      - "6379:6379"
+  neo4j:
+    image: "neo4j"
+    ports:
+      - "7474:7474"
+  grafana:
+    image: "grafana/grafana"
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_INSTALL_PLUGINS=redis-datasource

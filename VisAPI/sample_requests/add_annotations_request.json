@@ -1,0 +1,14 @@
+{
+  "dashboard_id": 1,
+  "panel_id": 0,
+  "annotations": [
+    {
+      "time_stamp": 1594058825169,
+      "description": "Annotation 1"
+    },
+    {
+      "time_stamp": 1593253653091,
+      "description": "Annotation 2"
+    }
+  ]
+}

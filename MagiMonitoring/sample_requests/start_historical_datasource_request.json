@@ -1,0 +1,8 @@
+{
+  "sample_rate_msec": 60000,
+  "price_label": "ACTIVE_PRICE",
+  "volume_label": "ACTIVE_VOLUME",
+  "date": "2021-09-24",
+  "bucket_size_msec": 60000,
+  "wait_time_msec": 0
+}

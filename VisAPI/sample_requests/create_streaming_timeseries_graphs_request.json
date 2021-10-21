@@ -1,0 +1,13 @@
+{
+  "streaming_time_series_info_list": [
+    {
+      "time_series_name": "test1"
+    },
+    {
+      "time_series_name": "test2"
+    }
+  ],
+  "title": "My Streaming Dashboard",
+  "last_minutes_count": 5,
+  "refresh_interval": "1s"
+}

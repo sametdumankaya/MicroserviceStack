@@ -1,0 +1,13 @@
+{
+  "time_series_info_list": [
+    {
+      "time_series_name": "BDX1-CO-7__0-1-CPU0__np0:PUNT_NO_MATCH"
+    },
+    {
+      "time_series_name": "BDX1-CO-7__0-0-CPU0__np1:LRN_ON_DEMAND_FLUSH_DELETE_ENTRY"
+    }
+  ],
+  "title": "My Dashboard",
+  "time_range_start": "2020-06-25T10:00:00.000Z",
+  "time_range_end": "2020-07-13T09:40:00.000Z"
+}

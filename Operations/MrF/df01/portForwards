@@ -1,0 +1,1 @@
+while true; do ssh -R3307:localhost:3306 -R6379:localhost:6380 -R6380:localhost:6381 -R6378:localhost:6378 df03_ubsk3 ; done

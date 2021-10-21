@@ -1,0 +1,15 @@
+Methods>>Structural Break Analysis>>Cythonized Structural Break Analysis
+Cythonized Structural Break Analysis>>Cythonized Structural Break Parameters>>Penalty Size>>pen>>3
+
+Methods>>Structural Break Analysis>>Ruptures Structural Break Analysis
+Ruptures Structural Break Analysis>>Ruptures Structural Break Parameters>>Model>>model>>m1
+Ruptures Structural Break Parameters>>Jump Value>>jum_val>>5
+Ruptures Structural Break Parameters>>Minimum Value>min_val>>3
+Ruptures Structural Break Parameters>>Penalty Value>pen_val>>3
+
+Methods>>Matrix Profile>>Matrix Profile Parameters>>Window Size>>m>>100
+Matrix Profile Parameters>>Subsequence Length>>L>>100
+Matrix Profile Parameters>>Number of Regimes>>n_regimes>>10
+
+Methods>>Histogram Based Event Detections >> Time Series Frequency Threshold >> ts_freq_threshold >>20
+Histogram Based Event Detections >> Histogram Peek Ratio >> peek_ratio>>0.3

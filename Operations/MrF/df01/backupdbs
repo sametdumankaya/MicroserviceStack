@@ -1,0 +1,10 @@
+mysqldump --databases msig stm > mysql.sql
+redis-cli -p 6378 save
+redis-cli -p 6379 save
+redis-cli -p 6380 save
+redis-cli -p 6381 save
+docker cp redismagi_mind:/data/dump.rdb redismagi_mind.rdb
+docker cp redis:/data/dump.rdb redis.rdb
+docker cp redistimeseries:/data/dump.rdb redistimeseries.rdb
+docker cp redismagi:/data/dump.rdb redismagi.rdb
+

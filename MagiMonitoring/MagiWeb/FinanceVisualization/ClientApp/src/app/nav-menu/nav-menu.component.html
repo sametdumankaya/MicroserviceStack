@@ -1,0 +1,54 @@
+<header>
+  <!--- Navbar --->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand text-white" [routerLink]="['']"><i class="fas fa-hat-wizard fa-lg mr-2"></i>MagiFinance</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nvbCollapse" aria-controls="nvbCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="nvbCollapse" style="font-size: small;overflow: auto">
+        <ul class="navbar-nav ml-auto">
+          <li joyrideStep="step1" [stepContent]="customContent1" class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/finance-news']"><i class="fas fa-comment-dollar fa-fw mr-1"></i>Finance News</a>
+          </li>
+          <!--<li joyrideStep="step2" [stepContent]="customContent2" class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/other-news-topics']"><i class="far fa-newspaper fa-fw mr-1"></i>Other News Topics</a>
+          </li>-->
+          <li joyrideStep="step3" [stepContent]="customContent3" class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/user-symbols']"><i class="fas fa-building fa-fw mr-1"></i>User Symbols</a>
+          </li>
+          <!--<li class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/predictions']"><i class="fas fa-chart-line fa-fw mr-1"></i>Predictions</a>
+          </li>-->
+          <li joyrideStep="step4" [stepContent]="customContent4" class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/financial-status']"><i class="fas fa-search-dollar fa-fw mr-1"></i>Financial Status</a>
+          </li>
+          <li joyrideStep="step5" [stepContent]="customContent5" class="nav-item pl-1" [routerLinkActive]="['link-active']">
+            <a class="nav-link" [routerLink]="['/correlations']"><i class="fas fa-square-root-alt fa-fw mr-1"></i>Correlations</a>
+          </li>
+        </ul>
+        <app-login-menu></app-login-menu>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<ng-template #customContent1>
+  In this tab, you will find latest important financial news.
+</ng-template>
+
+<ng-template #customContent2>
+  Find our editor's news here.
+</ng-template>
+
+<ng-template #customContent3>
+  You can create symbol groups to track your favorite companies closely.
+</ng-template>
+
+<ng-template #customContent4>
+  Get the latest sentimental information about companies, authors, news and industries from this tab.
+</ng-template>
+
+<ng-template #customContent5>
+  Lastly, you can explore our daily correlation analysis for companies, industries and sectors in Correlations tab.
+</ng-template>

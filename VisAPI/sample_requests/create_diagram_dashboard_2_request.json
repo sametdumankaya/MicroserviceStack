@@ -1,0 +1,8 @@
+{
+  "mermaid_markup": "graph LR\nleaf1[leaf1] --> spine1[spine1]\nleaf1 --> spine2\nleaf1 --> spine3\nleaf1 --> spine6\nleaf2[leaf2] --> spine1\nleaf2 --> spine2\nleaf2 --> spine3\nleaf2 --> spine6\nleaf3[leaf3] --> spine1\nleaf3 --> spine2\nleaf3 --> spine3\nleaf3 --> spine6\nleaf4[leaf4] --> spine1\nleaf4 --> spine2\nleaf4 --> spine3\nleaf4 --> spine6\nspine1 --> leaf5[leaf5]\nspine2 --> leaf5\nspine3 --> leaf5\nspine6 --> leaf5\nspine1 --> leaf6[leaf6]\nspine2 --> leaf6\nspine3 --> leaf6\nspine6 --> leaf6\nspine1 --> leaf7[leaf7]\nspine2 --> leaf7\nspine3 --> leaf7\nspine6 --> leaf7\nspine1 --> leaf8[leaf8]\nspine2 --> leaf8\nspine3 --> leaf8\nspine6 --> leaf8\ndr01(dr01) --> leaf1\ndr01 --> leaf2\ndr01 --> leaf3\ndr01 --> leaf4\ndr01 --> dr03(dr03)\nleaf4 --> dr03\ndr03 --> leaf8\ndr03 --> dr02(dr02)\nleaf5 --> dr02\nleaf6 --> dr02\nleaf7 --> dr02\nleaf8 --> dr02\n",
+  "dashboard_name": "Diagram Dashboard",
+  "live_data_key": "poc_data",
+  "streaming_interval_ms": 1000,
+  "log_key_name": "message",
+  "thresholds": []
+}

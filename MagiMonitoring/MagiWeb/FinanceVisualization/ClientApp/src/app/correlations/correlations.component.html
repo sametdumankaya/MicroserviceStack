@@ -1,0 +1,47 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="CORRELATIONS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p><i>Filters</i></p>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md-6">
+      <p-calendar id="startDate" [(ngModel)]="startDate" dateFormat="yy/mm/dd" [style]="{'width':'100%'}" [showButtonBar]="true" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+      <small id="startDate-help">Correlation date.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-center col-md-9">
+    </div>
+    <div class="text-right col-md-3">
+      <button pButton type="button" label="Filter" icon="pi pi-filter" (click)="filterData()" class="p-button"></button>
+    </div>
+  </div>
+  <p style="margin-top:90px;" class="text-center" *ngIf="!(isCorrelationsDataAvailable())">
+    <i>No correlations data available for the currently selected filters. Try to change filter values.</i>
+  </p>
+</p-card>
+<br />
+<br />
+
+<p-card *ngIf="isCorrelationsDataAvailable()" styleClass="p-card-shadow">
+  <button tooltipPosition="left" pTooltip="You can zoom the correlation graphs by drawing a rectangle and reset the zoom with double clicking." pButton pRipple type="button" icon="pi pi-info-circle" class="p-button-rounded p-button-info p-button-outlined p-button-text"></button>
+  <p-scrollPanel [style]="{width: '100%', height: '75vh'}">
+    <div *ngFor="let c of correlations">
+      <p-fieldset>
+        <div class="row">
+          <div class="col-md">
+            <p style="text-align:left"><i>{{ c.title }}</i></p>
+          </div>
+          <div class="col-md">
+            <p style="text-align:right"><i>{{ c.correlationDateTimeStamp |  date:'yyyy-MM-dd HH:mm:ss' }}</i></p>
+          </div>
+        </div>
+        <plotly-plot [data]="c.data" [layout]="layout"></plotly-plot>
+      </p-fieldset>
+      <br />
+    </div>
+  </p-scrollPanel>
+</p-card>
+
+

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "CSCO",
+    "type": "Symbol",
+    "statusValue": 0.73
+  },
+  {
+    "name": "AFL",
+    "type": "Symbol",
+    "statusValue": -0.67
+  },
+  {
+    "name": "AGO",
+    "type": "Symbol",
+    "statusValue": 0
+  },
+  {
+    "name": "XYZ News",
+    "type": "News",
+    "statusValue": 0.9
+  },
+  {
+    "name": "ABC News",
+    "type": "News",
+    "statusValue": -0.32
+  },
+  {
+    "name": "John Doe",
+    "type": "Author",
+    "statusValue": 0.83
+  },
+  {
+    "name": "Harry Potter",
+    "type": "Author",
+    "statusValue": -0.2
+  }
+]

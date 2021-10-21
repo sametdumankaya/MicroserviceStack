@@ -1,0 +1,127 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="COMPANY PREDICTIVE POWER ANALYSIS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p><i>Filters</i></p>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-calendar [(ngModel)]="startDateTime" dateFormat="yy/mm/dd" [style]="{'width':'100%'}" placeholder="Select date" [showButtonBar]="true" [readonlyInput]="true" [showIcon]="true"></p-calendar>
+    </div>
+    <div class="text-left col-md-6">
+      <p-dropdown id="userSymbolGroupDropdown" [showClear]="true" [style]="{'width':'100%'}" class="text-left" [options]="userSymbolGroups" [(ngModel)]="selectedUserSymbolGroup" placeholder="You can select your favorite symbol group." optionLabel="name"></p-dropdown>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-multiSelect [options]="sectorOptions" (onChange)="onSectorOptionsChange($event)" [style]="{'width':'100%'}" [(ngModel)]="selectedSectors" defaultLabel="Select sectors" optionLabel="name"></p-multiSelect>
+    </div>
+    <div class="text-left col-md">
+      <p-multiSelect [options]="industryOptions" [style]="{'width':'100%'}" [(ngModel)]="selectedIndustries" defaultLabel="Select industries within sectors" optionLabel="name"></p-multiSelect>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-inputNumber inputId="minMarket" prefix="$ " [style]="{'width':'100%'}" placeholder="Min Market Cap" [(ngModel)]="minMarketCap"></p-inputNumber>
+    </div>
+    <div class="text-left col-md">
+      <p-inputNumber inputId="maxMarket" prefix="$ " [style]="{'width':'100%'}" placeholder="Max Market Cap" [(ngModel)]="maxMarketCap"></p-inputNumber>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md-6">
+      <p-multiSelect [options]="indicatorOptions" [style]="{'width':'100%'}" [(ngModel)]="selectedIndicators" defaultLabel="Select indicators" optionLabel="name"></p-multiSelect>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-center col-md-9">
+    </div>
+    <div class="text-right col-md-3">
+      <button pButton type="button" label="Remove Filters" style="margin-right: 30px;" (click)="removeFilters()" class="p-button-secondary">
+        <i class="fa fa-user-plus fa-fw mr-1"></i>
+      </button>
+      <button pButton type="button" label="Filter" icon="pi pi-filter" (click)="filterData()" class="p-button"></button>
+    </div>
+  </div>
+  <div class="row" style="margin-top:90px;">
+  </div>
+  <p class="text-center" *ngIf="!(isChartDataAvailable())"><i>No predictive power data available for the currently selected filters. Try to change filter values.</i></p>
+  <br />
+  <p class="text-right"><i>Current time: {{ today | date:'medium' : 'PDT'  }} </i></p>
+</p-card>
+<br />
+<br />
+
+
+<p-card header="Predictive Powers" styleClass="p-card-shadow" *ngIf="isChartDataAvailable()">
+  <p-scrollPanel [style]="{width: '100%', height: '75vh'}">
+    <div *ngFor="let e of events; let i = index" style="cursor: pointer;" (click)="predictivePowerClick(e)">
+      <div>
+        <p-fieldset>
+          <p style="text-align:right"><i>{{ e.eventDateTimeStamp |  date:'yyyy-MM-dd HH:mm:ss' }}</i></p>
+          <div class="row">
+            <div class="col-md-4" style="display: flex; align-items: center;">
+              <h4 *ngIf="e.newsTitle != null && e.newsTitle != ''">{{e.newsTitle}}</h4>
+              <h5 *ngIf="!(e.newsTitle != null && e.newsTitle != '')"><i>No title available for this news.</i></h5>
+            </div>
+            <div class="col-md-8">
+              <p-chart *ngIf="e.eventPredictors != null && e.eventPredictors.length > 0" type="doughnut" [data]="allCharts[i]" [options]="options" id="canvas{{i}}"></p-chart>
+              <h6 style="text-align:right;" *ngIf="!(e.eventPredictors != null && e.eventPredictors.length > 0)"><i>No predictive power information available for this event.</i></h6>
+            </div>
+          </div>
+        </p-fieldset>
+        <br />
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-card>
+
+<p-dialog *ngIf="selectedEvent != null" header="Event, Happened at {{ selectedEvent.eventDateTimeStamp | date: 'yyyy/MM/dd HH:mm:ss' }}" [(visible)]="displayModalEvent" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+
+  <p-card [header]="selectedEvent.newsTitle != null ? selectedEvent.newsTitle : 'News Title Unavailable'">
+    <div [innerHTML]="selectedEvent.htmlData != null ? selectedEvent.htmlData : 'News Unavailable'"></div>
+  </p-card>
+
+  <br />
+  <br />
+
+  <p-card header="Predictive Powers">
+    <div *ngFor="let ep of selectedEvent.eventPredictors">
+      <p-card>
+        <div class="row">
+          <div class="col-md">
+            <label for="epSymbol"><i>Symbol</i></label>
+            <p id="epSymbol" *ngIf="ep.symbol">{{ ep.symbol }}</p>
+            <p id="epSymbol" *ngIf="!ep.symbol">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="liFirms"><i>Firm</i></label>
+            <p id="epFirms"><a target="_blank" *ngIf="ep.firmInfo && ep.firmInfo.target" [href]="ep.firmInfo.website">{{ ep.firmInfo.target.replace('amp;', '') }}</a></p>
+            <p id="epFirms"><a *ngIf="!(ep.firmInfo && ep.firmInfo.target)">UNKNOWN</a></p>
+          </div>
+          <div class="col-md">
+            <label for="liSectors"><i>Sectors</i></label>
+            <p id="liSectors" *ngIf="ep.firmInfo && ep.firmInfo.sector">{{ ep.firmInfo.sector.replace('amp;', '')  }}</p>
+            <p id="liSectors" *ngIf="!(ep.firmInfo && ep.firmInfo.sector)">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="liIndustries"><i>Industries</i></label>
+            <p id="liIndustries" *ngIf="ep.firmInfo && ep.firmInfo.industry">{{ ep.firmInfo.industry.replace('amp;', '')  }}</p>
+            <p id="liIndustries" *ngIf="!(ep.firmInfo && ep.firmInfo.industry)">UNKNOWN</p>
+          </div>
+          <div class="col-md">
+            <label for="epPower"><i>Predictive Power</i></label>
+            <p id="epPower" *ngIf="ep.predictivePower">{{ ep.predictivePower * 100 }} %</p>
+            <p id="epPower" *ngIf="!ep.symbol">UNKNOWN</p>
+          </div>
+        </div>
+      </p-card>
+      <br />
+    </div>
+  </p-card>
+
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayModalEvent=false" label="Done" class="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>

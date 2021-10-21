@@ -1,0 +1,392 @@
+[
+  {
+    "eventDateTimeStampEpochs": 1606616736000,
+    "htmlData": "<h1>HTML Ipsum Presents</h1>\n\n <br /><img src=\"https://finance.hatredio.design/wp-content/uploads/2018/03/59e6decaf0bf1f0001c98986_finance-tax.jpg\" width=\"400\" height=\"200\"> <br /> <br />\n\n<p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href=\"#\">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>\n\n<h2>Header Level 2</h2>\n\n<ol>\n   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\n   <li>Aliquam tincidunt mauris eu risus.</li>\n</ol>\n\n<blockquote><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus magna. Cras in mi at felis aliquet congue. Ut a est eget ligula molestie gravida. Curabitur massa. Donec eleifend, libero at sagittis mollis, tellus est malesuada tellus, at luctus turpis elit sit amet quam. Vivamus pretium ornare est.</p></blockquote>\n\n<h3>Header Level 3</h3>\n\n<ul>\n   <li>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</li>\n   <li>Aliquam tincidunt mauris eu risus.</li>\n</ul>",
+    "newsTitle": "MagiFinance Example News Title",
+    "indicators": [
+      {
+        "symbol": "GNK",
+        "volume": 999,
+        "price": 275,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "NTES",
+        "volume": 394,
+        "price": 810,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "PAG",
+        "volume": 889,
+        "price": 350,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "AM",
+        "volume": 890,
+        "price": 217,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "MTX",
+        "volume": 686,
+        "price": 934,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "CMG",
+        "volume": 597,
+        "price": 607,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "SBH",
+        "volume": 784,
+        "price": 330,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "NLOK",
+        "volume": 223,
+        "price": 862,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "NFJ",
+        "volume": 745,
+        "price": 638,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "BKNG",
+        "volume": 803,
+        "price": 354,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "JFR",
+        "volume": 527,
+        "price": 568,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "MDLZ",
+        "volume": 804,
+        "price": 279,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "AVA",
+        "volume": 702,
+        "price": 487,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "WSFS",
+        "volume": 523,
+        "price": 893,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "KYN",
+        "volume": 837,
+        "price": 521,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "TWIN",
+        "volume": 845,
+        "price": 806,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "LMT",
+        "volume": 368,
+        "price": 959,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "CENTA",
+        "volume": 462,
+        "price": 347,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "AVB",
+        "volume": 822,
+        "price": 802,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "LW",
+        "volume": 483,
+        "price": 547,
+        "eventRole": "Leading Indicator"
+      },
+      {
+        "symbol": "SLAB",
+        "volume": 646,
+        "price": 547,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "SSL",
+        "volume": 388,
+        "price": 319,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "AGM",
+        "volume": 554,
+        "price": 501,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "ACTG",
+        "volume": 465,
+        "price": 451,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "OLN",
+        "volume": 479,
+        "price": 738,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "PH",
+        "volume": 702,
+        "price": 883,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "NTRS",
+        "volume": 279,
+        "price": 661,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "SCHW",
+        "volume": 675,
+        "price": 974,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "UMC",
+        "volume": 873,
+        "price": 811,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "IGT",
+        "volume": 775,
+        "price": 447,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "DIOD",
+        "volume": 371,
+        "price": 412,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "WTI",
+        "volume": 819,
+        "price": 882,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "USEG",
+        "volume": 922,
+        "price": 753,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "KMB",
+        "volume": 825,
+        "price": 770,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "SNY",
+        "volume": 911,
+        "price": 668,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "KRNY",
+        "volume": 551,
+        "price": 428,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "VOD",
+        "volume": 975,
+        "price": 307,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "TOPS",
+        "volume": 290,
+        "price": 934,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "DSGX",
+        "volume": 997,
+        "price": 695,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "CCU",
+        "volume": 278,
+        "price": 836,
+        "eventRole": "Main Indicator"
+      },
+      {
+        "symbol": "TCO",
+        "volume": 781,
+        "price": 951,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "OGE",
+        "volume": 201,
+        "price": 223,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "AINV",
+        "volume": 810,
+        "price": 609,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "WHR",
+        "volume": 661,
+        "price": 989,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "NPO",
+        "volume": 927,
+        "price": 267,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "ARWR",
+        "volume": 227,
+        "price": 330,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "SYK",
+        "volume": 762,
+        "price": 427,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "ALC",
+        "volume": 581,
+        "price": 551,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "HL",
+        "volume": 686,
+        "price": 758,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "AA",
+        "volume": 998,
+        "price": 948,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "PFBI",
+        "volume": 648,
+        "price": 518,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "NNI",
+        "volume": 490,
+        "price": 447,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "MBWM",
+        "volume": 759,
+        "price": 700,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "ASA",
+        "volume": 824,
+        "price": 326,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "EME",
+        "volume": 234,
+        "price": 365,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "OMC",
+        "volume": 841,
+        "price": 780,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "COKE",
+        "volume": 407,
+        "price": 587,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "BMTC",
+        "volume": 275,
+        "price": 454,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "MRO",
+        "volume": 805,
+        "price": 971,
+        "eventRole": "Trailing Indicator"
+      },
+      {
+        "symbol": "AZN",
+        "volume": 721,
+        "price": 364,
+        "eventRole": "Trailing Indicator"
+      }
+    ],
+    "eventPredictors": [
+      {
+        "symbol": "AAPL",
+        "predictivePower": 0.83,
+        "dateTimeStamp": 1600063983357
+      },
+      {
+        "symbol": "CMC",
+        "predictivePower": 0.1,
+        "dateTimeStamp": 1600063983357
+      },
+      {
+        "symbol": "BIIB",
+        "predictivePower": 0.03,
+        "dateTimeStamp": 1600063983357
+      },
+      {
+        "symbol": "MSFT",
+        "predictivePower": 0.01,
+        "dateTimeStamp": 1600063983357
+      }
+    ],
+    "eventFlag": "Volume"
+  }
+]

@@ -1,0 +1,17 @@
+<ngx-spinner></ngx-spinner>
+
+<p class="text-center" style="margin-top: 60px;" *ngIf="!(isOtherNewsTopicsDataAvailable())"><i>No other news topics are available at this moment.</i></p>
+
+<p-card *ngIf="isOtherNewsTopicsDataAvailable()" header="Other News Topics" styleClass="p-card-shadow">
+  <p-scrollPanel [style]="{width: '100%', height: '75vh'}">
+    <div *ngFor="let o of otherNews">
+      <div *ngIf="o.title != null || o.htmlData != null">
+        <p-fieldset [legend]="o.title">
+          <p style="text-align:right"><i>{{ o.insertDate |  date:'yyyy-MM-dd HH:mm:ss' }}</i></p>
+          <angular-editor [config]="editorConfig" [(ngModel)]="o.htmlData"></angular-editor>
+        </p-fieldset>
+        <br />
+      </div>
+    </div>
+  </p-scrollPanel>
+</p-card>

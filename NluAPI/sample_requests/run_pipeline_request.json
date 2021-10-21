@@ -1,0 +1,13 @@
+{
+  "pipelines": [
+    "tokenize",
+    "ssplit",
+    "pos",
+    "lemma",
+    "ner",
+    "parse",
+    "depparse",
+    "coref"
+  ],
+  "text": "Chris Manning is a nice person. Chris wrote a simple sentence. He also gives oranges to people."
+}

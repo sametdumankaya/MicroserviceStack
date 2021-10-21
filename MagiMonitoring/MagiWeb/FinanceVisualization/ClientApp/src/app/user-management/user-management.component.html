@@ -1,0 +1,40 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="USER MANAGEMENT" styleClass="p-card-shadow">
+  <p-table #dt [value]="users" [rows]="10" [paginator]="true" [rowHover]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+      <div class="row">
+        <div class="col-md text-right">
+          <p-toggleButton [(ngModel)]="isRegistrationOpen" (onChange)="statusChanged($event)" onLabel="Registration open" offLabel="Registration closed" onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width': '15em'}"></p-toggleButton>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th colspan="2" pSortableColumn="email">Email <p-sortIcon field="email"></p-sortIcon></th>
+        <th>Email Confirmed</th>
+        <th>Can Add News Manually</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-u>
+      <tr>
+        <td colspan="2">{{u.email}}</td>
+        <td><span [class]="'status-badge-' + u.emailConfirmed">{{u.emailConfirmed}}</span></td>
+        <td><span [class]="'status-badge-' + u.canAddNews">{{u.canAddNews}}</span></td>
+        <td>
+          <button pButton tooltipPosition="top" pTooltip="Delete user" pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteUserClick(u.id)"></button>
+          <button pButton tooltipPosition="top" pTooltip="Toggle manual news permission" pRipple style="margin-left:10px;" icon="pi pi-pencil" class="p-button-rounded p-button-warning" (click)="updateManualNewsPermission(u.id)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{users ? users.length : 0 }} users.
+      </div>
+    </ng-template>
+  </p-table>
+</p-card>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

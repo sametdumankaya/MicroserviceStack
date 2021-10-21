@@ -1,0 +1,9 @@
+{
+  "sample_rate_msec": 600000,
+  "price_label": "ACTIVE_PRICE",
+  "volume_label": "ACTIVE_VOLUME",
+  "date": "2021-10-11",
+  "bucket_size_msec": 60000,
+  "wait_time_msec": 0,
+  "ts_job_interval_minutes": 18
+}

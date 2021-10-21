@@ -1,0 +1,13 @@
+{
+  "time_series_info_list": [
+    {
+      "time_series_name": "ts350"
+    },
+    {
+      "time_series_name": "ts351"
+    }
+  ],
+  "title": "My Dashboard",
+  "time_range_start": "2020-06-25T10:00:00.000Z",
+  "time_range_end": "2020-07-13T09:40:00.000Z"
+}

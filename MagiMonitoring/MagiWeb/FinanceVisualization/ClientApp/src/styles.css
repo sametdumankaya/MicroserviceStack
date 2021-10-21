@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+code {
+  color: #e01a76;
+}
+
+.btn-primary {
+  color: #fff;
+  border-color: #1861ac;
+}
+
+body {
+  background-color: #ffffff;
+}
+
+.p-card-shadow {
+  background-color: #f7f7f7 !important;
+}
+
+.feedback-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.p-scrollpanel .p-scrollpanel-bar {
+    background: #007bff;
+    border: 0;
+}

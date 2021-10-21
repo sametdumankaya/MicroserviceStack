@@ -1,0 +1,10 @@
+{
+  "dashboard_id": 1,
+  "panel_id": 1,
+  "annotations": [
+    {
+      "time_stamp": 1616404086000,
+      "description": "Streaming Annotation 1"
+    }
+  ]
+}

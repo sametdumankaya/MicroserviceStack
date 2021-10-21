@@ -1,0 +1,18 @@
+Time Series >>> Constant Slopes
+Time Series >>> Square Waves
+Time Series >>> Spikes
+Time Series >>> Other Motifs
+Time Series >>> Time Series without Structural Breaks
+Time Series >>> Time Series with Structural Breaks
+Time Series >>> Behaviors >>> Events
+Time Series >>> Events >>> Null Events
+Time Series >>> Leading Indicators
+Time Series >>> Main Indicators
+Time Series >>> Trailing Indicators
+Time Series >>> Ignore
+Time Series >>> Temporal Grouping
+Events >>> Classified Events >>> ECMP Load Imbalance
+Events >>> Classified Events >>> Port Flapping
+Events >>> Classified Events >>> Firewall Config Issue
+Classified Events >>> VLAN Setting Issue
+Events >>> Unclassified Events

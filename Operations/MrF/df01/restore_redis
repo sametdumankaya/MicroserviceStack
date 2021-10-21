@@ -1,0 +1,4 @@
+sudo docker run -d -p 6378:6379 -v $(pwd)/redismagi_mind.rdb:/data/dump.rdb –-name redismagi_mind redislabs/redistimeseries
+sudo docker run -d -p 6379:6379 -v $(pwd)/redis.rdb:/data/dump.rdb –-name redis redislabs/redistimeseries
+sudo docker run -d -p 6380:6379 -v $(pwd)/redistimeseries.rdb:/data/dump.rdb –-name redistimeseries redislabs/redistimeseries
+sudo docker run -d -p 6381:6379 -v $(pwd)/redismagi.rdb:/data/dump.rdb –-name redismagi redislabs/redistimeseries

@@ -1,0 +1,7 @@
+﻿In the same directory with bastion1.pem file:
+
+Port Forward
+ssh -nNT -R 5000:localhost:5000 ubuntu@34.223.57.176 -i bastion1.pem
+
+Connect to edit Nginx
+ssh -L 5000:localhost:80 ubuntu@34.223.57.176 -i bastion1.pem

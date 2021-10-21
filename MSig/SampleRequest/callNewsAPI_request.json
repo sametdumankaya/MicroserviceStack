@@ -1,0 +1,17 @@
+//createNeo4jAndRedisForNews
+{
+  "symbol": "MEOH",
+  "pageSize": 10,
+  "toNewsPublishedDate": "2021-06-11T04:35:09",
+  "fromNewsPublishedDate": "2021-05-01T03:35:09",
+  "industryList": [
+    "Chemicals"
+  ],
+  "category": ""
+}
+
+//GetNewsFromRedis
+{
+  "count": 10,
+  "date": "2021-06-25 00:00:00.0"
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Crew Decks Status</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+    html,
+    body {
+      padding: 20px;
+      margin: 0px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    #content {
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 21px;
+      font-weight: normal;
+      margin: 0;
+      padding: 0;
+    }
+
+    p.instructions {
+      padding: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    p.caption {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #8f8f8f;
+    }
+
+    p.caption a {
+      color: #3f3f3f;
+    }
+
+    </style>
+    <script type="text/javascript" src="annotorious.min.js"></script>
+    <link href="annotorious.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="content">
+    <img id="deck" src="deck_last.png">
+</div>
+<div>Logs</div>
+<div id="logs" style="height:400px;width:100%;border:1px solid #ccc;font:18px Georgia, Garamond, Serif;overflow:auto;">
+
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+      anno = Annotorious.init({
+        image: 'deck',
+        widgets: [
+          { widget: 'COMMENT' }
+        ]
+      });
+
+      anno.on('selectAnnotation', function (a) {
+        console.log('selected', a);
+      });
+
+      anno.on('cancelSelected', function (a) {
+        console.log('cancel', a);
+      });
+
+      anno.on('createAnnotation', function (a) {
+        console.log('created', JSON.stringify(a));
+
+      });
+
+      anno.on('updateAnnotation', function (annotation, previous) {
+        console.log('updated', previous, 'with', annotation);
+      });
+
+      anno.on('deleteAnnotation', function (annotation) {
+        console.log('deleted', annotation);
+      });
+
+      anno.setAnnotations([
+        {
+          "@context": "http://www.w3.org/ns/anno.jsonld",
+          "id": "#room",
+          "type": "Annotation",
+          "body": [
+            {
+              "type": "TextualBody",
+              "value": "Room",
+              "purpose": "commenting"
+            }
+          ],
+          "target": {
+            "selector": {
+              "type": "FragmentSelector",
+              "conformsTo": "http://www.w3.org/TR/media-frags/",
+              "value": "xywh=pixel:1224.68798828125,498.83416748046875,262.4464111328125,74.452880859375"
+            }
+          }
+        },
+        { "type": "Annotation", "body": [{ "type": "TextualBody", "value": "Engine", "purpose": "commenting" }], "target": { "selector": { "type": "FragmentSelector", "conformsTo": "http://www.w3.org/TR/media-frags/", "value": "xywh=pixel:1224.68798828125,355.5124206542969,262.4464111328125,74.45285034179688" } }, "@context": "http://www.w3.org/ns/anno.jsonld", "id": "#engine" },
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"Room2","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:1803.0548095703125,468.49737548828125,158.654541015625,110.1248779296875"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#room2"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"TurboGen","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:1801.1883544921875,354.6394348144531,160.52099609375,111.99142456054688"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#turboGen"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"CrewClub","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:1971.0419921875,535.6921997070312,130.65673828125,98.92578125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#crewClub"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"HutchCeiling","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:2601.9267578125,442.3660583496094,83.99365234375,72.79440307617188"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#hutchCeiling"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"Bedroom","purpose":"commenting"}],"target":{"selector":{"type":"SvgSelector","value":"<svg><polygon points=\"955.214599609375,453.17694091796875 957.7894897460938,455.7518005371094 1171.5035400390625,458.32666015625 1171.5035400390625,558.74658203125 1127.7308349609375,556.1716918945312 1122.5810546875,509.8240661621094 1112.2816162109375,509.8240661621094 1104.5570068359375,496.94970703125 950.0648803710938,494.3748474121094 950.0648803710938,496.94970703125\"></polygon></svg>"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#bedroom"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"poop","purpose":"commenting"}],"target":{"selector":{"type":"SvgSelector","value":"<svg><polygon points=\"414.49212646484375,378.5057373046875 414.49212646484375,375.9308776855469 417.0670166015625,375.9308776855469 411.9172668457031,543.29736328125 226.52670288085938,450.6020812988281\"></polygon></svg>"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#poop"},
+      {"type":"Annotation","body":[{"type":"TextualBody","value":"Boiler","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:1495.0784912109375,341.57379150390625,302.3768310546875,52.26263427734375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#boiler"}])
+
+      setInterval(function(){
+       $.ajax({
+            url: 'http://localhost:8005/get_streaming_data/',
+            type: "GET",
+            headers: {'Access-Control-Allow-Origin':'*'},
+            dataType: 'json',
+            content_type:"application/json",
+            success: function(data) {
+            for(var key in data.result){
+
+            $("[data-id='#"+key+"'] > .a9s-inner").css("fillOpacity", 0.5);
+            $("[data-id='#"+key+"'] > .a9s-inner").css("fill",data.result[key]["color"] );
+
+            var out = document.getElementById("logs");
+
+            var isScrolledToBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+
+            var newElement = document.createElement("div");
+            newElement.innerHTML = "<p style='color:"+data.result[key]["color"]+"'>"+data.result[key]["messages"]+"</p>";
+            out.appendChild(newElement);
+
+            if(isScrolledToBottom)
+              out.scrollTop = out.scrollHeight - out.clientHeight;
+
+            }
+
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        alert('Error occurred!');
+    }
+});
+
+       }, 1000);
+
+      anno.setDrawingTool('polygon');
+
+    });
+
+</script>
+</body>
+
+</html>

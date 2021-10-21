@@ -1,0 +1,73 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="YOUR OTHER NEWS TOPICS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p-toolbar styleClass="p-mb-4">
+    <ng-template pTemplate="left">
+      <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedManualNews()" [disabled]="!selectedManualNews || !selectedManualNews.length"></button>
+    </ng-template>
+
+    <ng-template pTemplate="right">
+      <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2" (click)="openNew()"></button>
+    </ng-template>
+  </p-toolbar>
+
+  <p-table #dt [value]="manualNews" [rows]="10" [paginator]="true" [(selection)]="selectedManualNews" [rowHover]="true" dataKey="id"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 3rem">
+          <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+        </th>
+        <th pSortableColumn="insertDate">Created On <p-sortIcon field="insertDate"></p-sortIcon></th>
+        <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
+        <th colspan="4">Summary</th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-mn>
+      <tr>
+        <td>
+          <p-tableCheckbox [value]="mn"></p-tableCheckbox>
+        </td>
+        <td>{{mn.insertDate | date:'yyyy-MM-dd'}}</td>
+        <td>{{getManualNewsTitleSummary(mn.title)}}</td>
+        <td colspan="4">{{getManualNewsSummary(mn.htmlData)}}</td>
+        <td style="text-align:center">
+          <button pButton tooltipPosition="top" pTooltip="Delete" pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger" (click)="deleteManualNews(mn)"></button>
+          <button pButton tooltipPosition="top" pTooltip="Edit" pRipple style="margin-left:10px;" type="button" icon="fas fa-edit" class="p-button-rounded p-button-warning" (click)="editManualNews(mn)"></button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{manualNews ? manualNews.length : 0 }} manually added news.
+      </div>
+    </ng-template>
+  </p-table>
+</p-card>
+
+<p-dialog [(visible)]="manualNewsDialog" [style]="{width: '80vw'}" [contentStyle]="{height: '40vw'}" header="News Details" [modal]="true" styleClass="p-fluid">
+  <ng-template pTemplate="content">
+    <div class="row">
+      <div class="col-md-4">
+        <label for="title">News Title</label>
+        <input id="title" type="text" style="width: 100%;" pInputText [(ngModel)]="title">
+      </div>
+    </div>
+    <div class="p-field" style="margin-top:30px;">
+      <label for="news-content">News Content</label>
+      <angular-editor id="news-content" [config]="config" [(ngModel)]="text"></angular-editor>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+    <p-button (click)="saveManualNews()" [label]="id > 0 ? 'Update News' : 'Save News'" icon="fas fa-check"></p-button>
+  </ng-template>
+</p-dialog>
+
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>

@@ -1,0 +1,16 @@
+{
+  "from_time": 0,
+  "to_time": -1,
+  "aggregation_type": "last",
+  "bucket_size_msec": 60000,
+  "num_regimes": 20,
+  "filters": "TARGET=SENSORDOG",
+  "ts_freq_threshold": 50,
+  "peek_ratio": 0.3,
+  "enablePlotting": true,
+  "enablePrediction": true,
+  "enablePercentChange": true,
+  "window": 10,
+  "timeZone": "US/Pacific",
+  "output_name": "SensorDog4TimeSeries"
+}

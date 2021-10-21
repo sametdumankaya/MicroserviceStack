@@ -1,0 +1,151 @@
+Events >>> Buffers
+Events >>> Interface
+Events >>> Throughput
+Events >>> Control Plane
+Events >>> RIF/FIB
+Events >>> Policies
+Events >>> Physical
+Events >>> Environmental
+Events >>> Discard
+Events >>> Layer 3
+Events >>> Layer 2
+Events >>> Layer 1
+
+Buffers >>>
+Interface >>>
+Throughput >>>
+Control Plane >>>
+RIF/FIB >>>
+Policies >>>
+Physical >>>
+Environmental >>>
+Discard >>>
+Layer 3 >>>
+Layer 2 >>>
+Layer 1 >>>
+
+Physical >>> ASIC ECC errors
+Discard >>> ASIC ECC errors
+
+Buffers >>> BFD state change
+Interface >>> BFD state change 
+Throughput >>> BFD state change
+Physical >>> BFD state change
+Control Plane >>> BFD state change
+RIF/FIB >>> BFD state change
+Discard >>> BFD state change
+Layer 3 >>> BFD state change
+Layer 1 >>> BFD state change
+
+Buffers >>> Buffer starvation
+Interface >>> Buffer starvation 
+Throughput >>> Buffer starvation
+Physical >>> Buffer starvation
+Discard >>> Buffer starvation
+
+Buffers >>> CDP drop
+Interface >>> CDP drop 
+Throughput >>> CDP drop
+Physical >>> CDP drop
+Control Plane >>> CDP drop
+Policies >>> CDP drop
+Discard >>> CDP drop
+Layer 2 >>> CDP drop
+Layer 1 >>> CDP drop
+
+Physical >>> CEF punts
+Control Plane >>> CEF punts
+RIF/FIB >>> CEF punts
+Layer 3 >>> CEF punts
+
+Buffers >>> DDoS
+Interface >>> DDoS
+Throughput >>> DDoS
+Control Plane >>> DDoS
+Policies >>> DDoS
+Discard >>> DDoS
+
+Physical >>> Device failure
+Control Plane >>> Device failure
+Environmental >>> Device failure
+
+Physical >>> Disk full/failure
+Control Plane >>> Disk full/failure
+
+Buffers >>> ECMP imbalance
+Interface >>> ECMP imbalance
+Throughput >>> ECMP imbalance
+Control Plane >>> ECMP imbalance
+RIF/FIB >>> ECMP imbalance
+Policies >>> ECMP imbalance
+Physical >>> ECMP imbalance
+Discard >>> ECMP imbalance
+Layer 3 >>> ECMP imbalance
+Layer 2 >>> ECMP imbalance
+
+Physical >>> Fan failure
+Environmental >>> Fan failure
+
+Buffers >>> Misconfigured
+Interface >>> Misconfigured
+Throughput >>> Misconfigured
+Control Plane >>> Misconfigured
+RIF/FIB >>> Misconfigured
+Policies >>> Misconfigured
+Physical >>> Misconfigured
+Discard >>> Misconfigured
+Layer 3 >>> Misconfigured
+Layer 2 >>> Misconfigured
+Layer 1 >>> Misconfigured
+
+Physical >>> High CPU
+Control Plane >>> High CPU
+Environmental >>> High CPU
+
+Physical >>> High fan speed
+Environmental >>> High fan speed
+
+Physical >>> High temperature
+Environmental >>> High temperature
+
+Interface >>> Interface Errors 
+Throughput >>> Interface Errors
+Physical >>> Interface Errors
+Discard >>> Interface Errors
+Layer 2 >>> Interface Errors
+Layer 1 >>> Interface Errors
+
+Buffers >>> LACP imbalance
+Interface >>> LACP imbalance
+Throughput >>> LACP imbalance
+Control Plane >>> LACP imbalance
+RIF/FIB >>> LACP imbalance
+Policies >>> LACP imbalance
+Physical >>> LACP imbalance
+Discard >>> LACP imbalance
+Layer 3 >>> LACP imbalance
+Layer 2 >>> LACP imbalance
+
+Interface >>> LACP member fail 
+Throughput >>> LACP member fail
+Physical >>> LACP member fail
+Control Plane >>> LACP member fail
+Layer 2 >>> LACP member fail
+Layer 1 >>> LACP member fail
+
+Interface >>> Link failure 
+Physical >>> Link failure
+Control Plane >>> Link failure
+Environmental >>> Link failure
+Discard >>> Link failure
+Layer 1 >>> Link failure
+
+Buffers >>> LLDP drop
+Interface >>> LLDP drop
+Throughput >>> LLDP drop
+Physical >>> LLDP drop
+Control Plane >>> LLDP drop
+Policies >>> LLDP drop
+Discard >>> LLDP drop
+Layer 2 >>> LLDP drop
+Layer 1 >>> LLDP drop

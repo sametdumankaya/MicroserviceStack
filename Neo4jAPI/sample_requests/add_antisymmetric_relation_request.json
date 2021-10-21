@@ -1,0 +1,8 @@
+{
+  "start_node_id": 1,
+  "end_node_id": 2,
+  "relation_name": "contains",
+  "relation_properties": {
+    "relation_attr": "test attribute"
+  }
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Floor Plan Status</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+    html,
+    body {
+      padding: 20px;
+      margin: 0px;
+      font-family: 'Lato', sans-serif;
+    }
+
+    #content {
+      width: 100%;
+    }
+
+     .half {
+      width: 48%;
+      float:left;
+    }
+    h1 {
+      font-size: 21px;
+      font-weight: normal;
+      margin: 0;
+      padding: 0;
+    }
+
+    p.instructions {
+      padding: 10px 0;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    p.caption {
+      font-family: Arial, Helvetica, sans-serif;
+      color: #8f8f8f;
+    }
+
+    p.caption a {
+      color: #3f3f3f;
+    }
+
+    </style>
+    <script type="text/javascript" src="annotorious.min.js"></script>
+    <link href="annotorious.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+<div id="content">
+    <div class="half">
+         <img id="floor_plan" src="floor_plan.png">
+    </div>
+
+<div class="half">
+    <div>Logs</div>
+<div id="logs" style="height:400px;width:100%;border:1px solid #ccc;font:18px Georgia, Garamond, Serif;overflow:auto;">
+<</div>
+</div>
+</div>
+
+
+
+
+<script>
+    $(document).ready(function () {
+      anno = Annotorious.init({
+        image: 'floor_plan',
+        widgets: [
+          { widget: 'COMMENT' }
+        ]
+      });
+
+      anno.on('selectAnnotation', function (a) {
+        console.log('selected', a);
+      });
+
+      anno.on('cancelSelected', function (a) {
+        console.log('cancel', a);
+      });
+
+      anno.on('createAnnotation', function (a) {
+        console.log('created', JSON.stringify(a));
+
+      });
+
+      anno.on('updateAnnotation', function (annotation, previous) {
+        console.log('updated', previous, 'with', annotation);
+      });
+
+      anno.on('deleteAnnotation', function (annotation) {
+        console.log('deleted', annotation);
+      });
+
+      anno.setAnnotations([
+        {"type":"Annotation","body":[{"type":"TextualBody","value":"B3","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:332,124,101,30"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B3"},
+        {"type":"Annotation","body":[{"type":"TextualBody","value":"B1","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:116,124,96,33"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B1"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"rswB1","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:115,160,96,15"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#rswB1"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"B2","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:229,123,92,176"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B2"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf5","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:333.81414794921875,158.42189025878906,98.44790649414062,15.842178344726562"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf5"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf6","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:336.07733154296875,178.7904052734375,95.05313110351562,14.710601806640625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf6"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf7","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:331.5509948730469,195.76419067382812,99.5794677734375,16.973770141601562"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf7"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf8","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:334.94573974609375,216.13270568847656,96.18472290039062,16.973785400390625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf8"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"sswB3","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:331.5509948730469,246.6855010986328,99.5794677734375,19.236953735351562"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#sswB3"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"dr03","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:333.81414794921875,276.1067199707031,97.31631469726562,24.894866943359375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#dr03"},
+  {"type":"Annotation","body":[{"type":"TextualBody","value":"B4","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:449.2358093261719,123.3427505493164,95.05313110351562,30.55278778076172"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B4"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Spine1","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:446.47882080078125,156.03611755371094,98.87432861328125,13.904205322265625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine1"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"A1","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:112.92863464355469,390.9095458984375,89.04051208496094,158.53558349609375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A1"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A2","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:224.77220153808594,393.081298828125,83.61122131347656,156.36383056640625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A2"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A4","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:444.11590576171875,395.2530212402344,95.5556640625,36.919219970703125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A4"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A4_Alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:446.2876281738281,454.9753112792969,91.21224975585938,95.55569458007812"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A4_alt"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A5","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:557.0453491210938,395.2530212402344,95.5556640625,36.919219970703125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A5"} ,
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A5_alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:557.0453491210938,452.8035888671875,93.3839111328125,96.64154052734375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A5_alt"} ,
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A6","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:671.0606079101562,395.2530212402344,93.38397216796875,36.919219970703125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A6"} ,
+{"type":"Annotation","body":[{"type":"TextualBody","value":"A6_alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:671.0606079101562,454.9753112792969,94.4698486328125,95.55569458007812"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A6_alt"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"rswA4A","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:444.11590576171875,434.3439636230469,95.5556640625,15.202056884765625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#rswA4A"} ,
+{"type":"Annotation","body":[{"type":"TextualBody","value":"rswA5A","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.217041015625,435.4298400878906,91.21221923828125,16.28790283203125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#rswA5A"} ,
+{"type":"Annotation","body":[{"type":"TextualBody","value":"rswA6A","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:671.0606079101562,435.4298400878906,94.4698486328125,16.28790283203125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#rswA6A"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"Spine2","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:449.3764953613281,173.74240112304688,95.36239624023438,13.063323974609375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine2"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Spine3","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:450.6828308105469,190.7247314453125,92.74972534179688,11.757003784179688"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine3"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Spine4","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:449.3764953613281,206.40074157714844,95.36239624023438,13.063339233398438"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine4"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Spine5","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:449.3764953613281,223.38307189941406,95.36239624023438,13.063339233398438"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine5"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Spine6","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:449.3764953613281,236.4464111328125,96.66873168945312,14.369674682617188"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Spine6"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"dr02","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:448.0701599121094,276.9427490234375,97.97506713867188,24.820343017578125"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#dr02"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"B5","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:557.8021850585938,124.1017074584961,99.2813720703125,36.577354431152344"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B5"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf1","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.1085205078125,160.67906188964844,99.2813720703125,16.982330322265625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf1"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf2","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.1085205078125,178.9677276611328,99.2813720703125,16.982345581054688"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf2"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf3","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.1085205078125,197.25640869140625,96.668701171875,16.982330322265625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf3"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"Leaf4","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.1085205078125,218.15774536132812,95.36236572265625,18.288665771484375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#Leaf4"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"B6","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:670.1469116210938,124.1017074584961,100.58770751953125,33.964683532714844"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B6"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"rswB6","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:670.1469116210938,159.3727264404297,97.97503662109375,18.288665771484375"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#rswB6"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"dr01","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:671.4532470703125,266.4920959472656,96.668701171875,31.352020263671875"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#dr01"} ,
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"A3","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:331.80645751953125,391.57354736328125,88.83071899414062,158.06640625"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#A3"},
+ {"type":"Annotation","body":[{"type":"TextualBody","value":"B1_alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:114.95506286621094,178.31455993652344,96.668701171875,120.18269348144531"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B1_alt"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"B5_alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:559.1085205078125,237.09957885742188,96.668701171875,61.397674560546875"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B5_alt"},
+{"type":"Annotation","body":[{"type":"TextualBody","value":"B6_alt","purpose":"commenting"}],"target":{"selector":{"type":"FragmentSelector","conformsTo":"http://www.w3.org/TR/media-frags/","value":"xywh=pixel:671.4532470703125,179.6208953857422,96.668701171875,84.91169738769531"}},"@context":"http://www.w3.org/ns/anno.jsonld","id":"#B6_alt"}
+ ])
+
+
+      setInterval(function(){
+       $.ajax({
+            url: 'http://localhost:8009/get_streaming_data_floor_plan_blackhole/',
+            type: "GET",
+            headers: {'Access-Control-Allow-Origin':'*'},
+            dataType: 'json',
+            content_type:"application/json",
+            success: function(data) {
+	    var newElement = document.createElement("div");
+	    var out = document.getElementById("logs");
+            newElement.innerHTML = "<p style='color:black'>"+data.result.message+"</p>";
+            out.prepend(newElement);
+            for(var key in data.result){
+		 $("[data-id='#"+key+"'] > .a9s-inner").css("fillOpacity", 0.5);
+	         $("[data-id='#"+key+"'] > .a9s-inner").css("fill",data.result[key]["color"] );
+            }
+
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+        alert('Error occurred!');
+    }
+});
+
+       }, 1000);
+
+      anno.setDrawingTool('rect');
+
+    });
+
+</script>
+</body>
+
+</html>

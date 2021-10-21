@@ -1,0 +1,7 @@
+{
+  "start_node_id": 3,
+  "end_node_id": 2,
+  "relation_properties": {
+    "relation_attr": "test attribute"
+  }
+}

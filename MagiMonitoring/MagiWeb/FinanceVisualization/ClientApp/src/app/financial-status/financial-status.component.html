@@ -1,0 +1,82 @@
+<ngx-spinner></ngx-spinner>
+
+<p-card header="FINANCIAL STATUS ANALYSIS" styleClass="p-card-shadow">
+  <ng-template pTemplate="header">
+  </ng-template>
+  <p><i>Filters</i></p>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <input id="searchName" type="text" style="width: 100%;" pInputText [(ngModel)]="searchName">
+      <small id="searchName-help">Search name.</small>
+    </div>
+    <div class="text-left col-md">
+      <p-dropdown id="typeDropdown" [showClear]="true" [style]="{'width':'100%'}" class="text-left" [options]="financialStatusTypes" [(ngModel)]="selectedFinancialStatusType" placeholder="Select financial status type." optionLabel="name"></p-dropdown>
+      <small id="typeDropdown-help">Financial status type.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md">
+      <p-inputNumber id="minStatusValue" inputId="minStatusValue" [min]="-100" [max]="100" suffix=" %" [style]="{'width':'100%'}" [(ngModel)]="minStatusValue"></p-inputNumber>
+      <small id="minStatusValue-help">Minimum status value.</small>
+    </div>
+    <div class="text-left col-md">
+      <p-inputNumber id="maxStatusValue" inputId="maxStatusValue" [min]="-100" [max]="100" suffix=" %" [style]="{'width':'100%'}" [(ngModel)]="maxStatusValue"></p-inputNumber>
+      <small id="maxStatusValue-help">Maximum status value.</small>
+    </div>
+  </div>
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-left col-md-6">
+      <p-dropdown id="userSymbolGroupDropdown" [showClear]="true" [style]="{'width':'100%'}" class="text-left" [options]="userSymbolGroups" [(ngModel)]="selectedUserSymbolGroup" placeholder="You can select your favorite symbol group." optionLabel="name"></p-dropdown>
+      <small id="userSymbolGroupDropdown-help">Filter events by your favorite symbol groups.</small>
+    </div>
+    <div class="text-left col-md-6">
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom:30px;">
+    <div class="text-center col-md-6">
+    </div>
+    <div class="text-right col-md-6">
+      <button pButton type="button" label="Remove Filters" style="margin-right: 15px;" (click)="removeFilters()" class="p-button-primary">
+        <i class="fas fa-ban fa-fw mr-1"></i>
+      </button>
+      <button pButton type="button" label="Filter" icon="pi pi-filter" (click)="filterData()" class="p-button"></button>
+    </div>
+  </div>
+  <p style="margin-top:90px;" class="text-center" *ngIf="!(isFinancialStatusDataAvailable())">
+    <i>No financial status data available for the currently selected filters. Try to change filter values.</i>
+  </p>
+</p-card>
+<br />
+<br />
+
+<p-card styleClass="p-card-shadow" *ngIf="isFinancialStatusDataAvailable()">
+  <p-table #dt [value]="financialStatuses" [rows]="10" [paginator]="true" [rowHover]="true"
+           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
+    <ng-template pTemplate="caption">
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+        <th pSortableColumn="insertDate">Insert Date <p-sortIcon field="insertDate"></p-sortIcon></th>
+        <th pSortableColumn="type">Type <p-sortIcon field="type"></p-sortIcon></th>
+        <th pSortableColumn="statusValue">Status Value <p-sortIcon field="statusValue"></p-sortIcon></th>
+        <th></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-fs>
+      <tr>
+        <td>{{fs.name}}</td>
+        <td>{{fs.insertDate | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+        <td>{{fs.type}}</td>
+        <td>{{fs.statusValue * 100 | number : '.2-2'}} %</td>
+        <td><button (click)="financialStatusClick(fs)" pButton type="button" label="News" icon="fas fa-newspaper" pTooltip="Go to news"></button></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <div class="p-d-flex p-ai-center p-jc-between">
+        In total there are {{financialStatuses ? financialStatuses.length : 0 }} financial status.
+      </div>
+    </ng-template>
+  </p-table>
+</p-card>

@@ -1,0 +1,39 @@
+apiVersion: 1
+
+deleteDatasources:
+  - name: Redis
+    orgId: 1
+
+datasources:
+  - name: Redis
+    type: redis-datasource
+    access: proxy
+    url: redis://localhost:6379
+    password: ""
+    user: ""
+    database: ""
+    basicAuth: false
+    isDefault: true
+    readOnly: true
+  - name: Redis6381
+    type: redis-datasource
+    access: proxy
+    url: redis://localhost:6381
+    password: ""
+    user: ""
+    database: ""
+    basicAuth: false
+    isDefault: false
+    readOnly: true
+  - name: MySQL
+    type: mysql
+    typeLogoUrl: public/app/plugins/datasource/mysql/img/mysql_logo.svg
+    access: proxy
+    url: localhost:3306
+    password: magi
+    user: magi
+    database: magi
+    basicAuth: false
+    isDefault: false
+    jsonData: { }
+    readOnly: true

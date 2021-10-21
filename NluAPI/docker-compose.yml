@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  nlu_api:
+    build: .
+    environment:
+      - api_port=8004
+    network_mode: "host"
+  neo4j:
+    image: "neo4j"
+    environment:
+      - NEO4J_AUTH=neo4j/magi
+      - NEO4JLABS_PLUGINS=["apoc"]
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=false
+    volumes:
+      - /neo4j_data_nluapi:/data
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+  neo4j_api:
+    build: ../Neo4jAPI
+    environment:
+      - api_port=8003
+      - neo4j_host=localhost
+      - neo4j_port=7687
+      - neo4j_user=neo4j
+      - neo4j_password=magi
+    network_mode: "host"
+  corenlp:
+    image: "nlpbox/corenlp"
+    ports:
+      - "9000:9000"

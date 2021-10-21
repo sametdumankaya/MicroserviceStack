@@ -1,0 +1,90 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="row text-center">
+    <div class="col-md-4 offset-md-4">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h4>Create a new account.</h4>
+            <hr />
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Input.Email"></label>
+                <input asp-for="Input.Email" class="form-control" />
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.ConfirmPassword"></label>
+                <input asp-for="Input.ConfirmPassword" class="form-control" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <p style="font-size:12px; margin-top:16px;">By clicking "Register", you acknowledge you have read and agreed to our <b data-toggle="modal" data-target="#exampleModalLong" style="cursor:pointer">Terms of Use and Privacy Policy</></b>.</p>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Terms of Use and Privacy Policy</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Welcome to MAGIFinance.com (the "<strong>Site</strong>") presented by MAGI Finance, LLC. ("<strong>MAGI Finance</strong>", "<strong>Company</strong>", "<strong>we</strong>", or "<strong>us</strong>"). The following terms and conditions, together with any documents incorporated by reference (this "<strong>Agreement</strong>") govern your use, whether as a guest or a registered User, of the Site and any other sites, products, services, features, contents, mobile sites,&nbsp;and&nbsp;applications/or offered by us from time to time that link or otherwise refer to this Agreement, (collectively, including the Site, the "<strong>Services</strong>").&nbsp; By accessing and/or using the Services, you accept and agree to be bound and abide by this Agreement and to comply with all applicable laws, rules, and regulations.&nbsp; If you do not want to agree to the terms of this Agreement, you must not access or use the Services.</p>
+                <p>PLEASE NOTE THAT THE "<u>ARBITRATION &amp; CLASS ACTION WAIVER AGREEMENT</u>"&nbsp;SECTION BELOW CONTAINS PROVISIONS THAT REQUIRE WITH LIMITED EXCEPTIONS, ALL DISPUTES ARISING BETWEEN YOU AND THE COMPANY UNDER THIS AGREEMENT TO BE RESOLVED IN BINDING ARBITRATION, AND NOT IN COURT, AND THAT YOU AND THE COMPANY WAIVE THE RIGHT TO BRING OR&nbsp;PARTICIPATE IN A CLASS ACTION IN CONNECTION WITH SUCH DISPUTES.&nbsp; PLEASE READ THE ARBITRATION &amp; CLASS ACTION WAIVER AGREEMENT CAREFULLY BEFORE USING THE SERVICES.&nbsp;BY USING THE SERVICES AND ACCEPTING THIS AGREEMENT, YOU AGREE TO BE BOUND BY THE ARBITRATION &amp; CLASS ACTION WAIVER AGREEMENT.</p>
+                <p>The Services provided by MAGI Finance, including content accessible on the Services, are provided on an &ldquo;as is,&rdquo; or &ldquo;as available&rdquo; basis, and there may be delays, omissions, and/or inaccuracies in such items.&nbsp; MAGI Finance specifically disclaims any representations or warranties, express or implied, including without limitation,</p>
+                <ul>
+                    <li>any representation or warranties of merchantability or fitness for a particular purpose;</li>
+                    <li>Warranties against infringement of any third-party intellectual property or proprietary rights;</li>
+                    <li>Warranties relating to the transmission or delivery of a service;</li>
+                    <li>Warranties relating to the accuracy, sequence, completeness, correctness, timeliness, merchantability, or fitness or a particular purpose of the services and/or the content, data, and/or materials made available through the services, including any advice, opinion, statement or other material or database displayed, uploaded and/or distributed in the services or available through the services, and</li>
+                    <li>Warranties otherwise relating to the performance, nonperformance, or other acts or omissions by MAGI Finance or any third party.</li>
+                </ul>
+                <p>&nbsp;MAGI Finance further disclaims any representations or warranties, express or implied,</p>
+                <ul>
+                    <li>That the services will meet the user&rsquo;s needs or requirements or the needs or requirements of any third persons;</li>
+                    <li>That the information provided through the services will be free from error, omission, interruption, defect, or delay, or free from technical inaccuracies or typographical errors,</li>
+                    <li>That defects or errors in the services will be corrected; or,</li>
+                    <li>That the content on the services is free from viruses or other harmful components.</li>
+                </ul>
+                <p>Any information or content on the Services is subject to change without notice, and MAGI Finance disclaims all responsibility for the Services.&nbsp;</p>
+                <p>Indemnification</p>
+                <p>You agree to indemnify and hold the MAGI Finance, its parents, subsidiaries, affiliates, licensors, advertisers and sponsors, agents, directors, officers, managers, employees, representatives, operators, service providers, and third-party information providers (collectively, the "<strong>MAGI Indemnified Parties</strong>") harmless from and against any and all losses, penalties, claims, actions, suits, costs, judgements, settlements, expenses, damages, including reasonable attorney&rsquo;s fees and litigation costs, resulting or arising from any claim, action or proceeding brought by you or any third party in connection with or relating to your access to or use of the Services (or the use of the Services by another person using your password) or breach or violation of this Agreement.&nbsp; In no event will MAGI Indemnified Parties be liable to you or any third party for your use of or inability to use the Services, the site, any sites linked to or from the Services, any data on the Services, or any decision made or action taken by you in reliance upon such information or data or for any consequential, special or similar damages, including, but not limited to, lost profits, trading losses, damages resulting from inconvenience, or loss by reason of shutdown in operation or increased expenses of operation, or other indirect loss or damage, even if advised of the possibility of such damages.&nbsp; This Service may be discontinued or limited at any time.&nbsp;</p>
+                <p>MAGI Finance makes no warranties of any kind regarding any third-party sites or services ("<strong>Third-Party Services</strong>") to which you may be directed or linked to from the Services. Links are included solely for your convenience, and MAGI Finance makes no representations or warranties with regard to the accuracy, availability, suitability, or safety of information provided in such Third-Party Services. Inclusion of any Third-Party Service or a link thereto on the Services does not imply approval or endorsement by MAGI Finance of the Third-Party Service. When you engage with a provider of a Third-Party Service, you are interacting with the third-party, not with MAGI Finance.&nbsp;When you access Third-Party Services, you understand that you do so at your own risk.&nbsp;If you choose to use a Third-Party Service and share information with it, the provider of the Third-Party Service may use and share your data in accordance with its privacy policy and your privacy settings on such Third-Party Service.&nbsp; You should not provide any personally identifiable information to or through any Third-Party Service unless you know and are comfortable with the party with whom you are interacting.&nbsp; In addition, the provider of the Third-Party Service may use other parties to provide portions of the application or service to you, such as technology, development or payment services.<strong>&nbsp;</strong></p>
+                <p>Dispute Resolution, Agreement to Arbitrate, and Class Action Waiver</p>
+                <p>Please read this section carefully.&nbsp; This section affects your legal rights, including your right to bring a lawsuit in court.</p>
+                <p>BINDING ARBITRATION. Any and all controversies or claims arising out of or relating to this Agreement or any aspect of the relationship between MAGI Finance and you or third party user, whether based in contract, tort, statute, fraud, misrepresentation or any other legal theory, will be resolved by binding, individual arbitration, with the limited exception of the following: 1) any statutory or common law claim involving intellectual property, and 2) any claim brought in small claims court where the amount in controversy is properly within the jurisdiction of such small claims court (collectively, the &ldquo;Excluded Claims&rdquo;). YOUR AGREEMENT TO ARBITRATION MEANS, EXCEPT FOR THE EXCLUDED CLAIMS, YOU ARE GIVING UP YOUR RIGHT TO FILE A LAWSUIT IN COURT AND THE RIGHT TO A TRIAL BY JURY. INSTEAD, YOU WILL HAVE A HEARING BEFORE A NEUTRAL ARBITRATOR.</p>
+                <p>WAIVER OF CLASS ARBITRATIONS AND CLASS ACTIONS. YOU AND MAGI FINANCE AGREE THAT YOU EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN YOUR OR ITS INDIVIDUAL CAPACITY, AND NOT AS A NAMED PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS ACTION, CLASS ARBITRATION, OR ANY FORM OF REPRESENTATIVE PROCEEDING. YOU AGREE THAT FOR ALL DISPUTES BETWEEN US THERE WILL BE NO CLASS ARBITRATIONS OR CLASS ACTIONS IN ANY FORUM. This means that by entering into this Agreement, any arbitration under this Agreement will take place on an individual basis only and the arbitrator shall not allow any class arbitrations or class proceedings, and shall not aggregate claims of multiple parties. This also means that by entering into this Agreement, independent of the agreement to arbitrate and waiver of class arbitration, you are giving up the ability to participate in or bring a class action in court for any and all claims, including but not limited to the Excluded Claims.</p>
+                <p>&nbsp;All arbitrations under this Agreement will be administered by the American Arbitration Association in accordance with its Consumer Arbitration Rules (the &ldquo;Arbitration Rules&rdquo;). Contact information for the American Arbitration Association, as well as copies of the Rules and applicable forms, are available at http://www.adr.org.</p>
+                <p>All issues are for the arbitrator to decide, except that issues relating to the scope, application, and enforceability of the arbitration and class action waiver provisions are for the court to decide. California law applies to any arbitration under this Agreement, but the parties acknowledge that the Federal Arbitration Act governs the interpretation and enforcement of the arbitration agreement.</p>
+                <p>In circumstances in which the Arbitration Rules provide for an in-person hearing, such hearing will take place in the County of Los Angeles in the State of California, unless you and MAGI Finanace both agree otherwise in writing. Payment of all filing, administration, and arbitrator fees will be governed by the AAA&rsquo;s rules, except as follows: if your total Claims seek less than $10,000, we will reimburse you for filing fees you pay to the AAA to initiate arbitration.</p>
+                <p>Judgment on the award rendered by the arbitrator may be entered in any federal or state court of competent jurisdiction located in the County of Los Angeles in the State of California.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+<script>
+    function showasdf() {
+
+    }
+</script>
+}
